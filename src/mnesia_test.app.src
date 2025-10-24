@@ -1,0 +1,9 @@
+{application, mnesia_test,
+	[{description, "mnesia存储测试"},
+		{vsn, "1.0"},
+		{modules, [tester]},
+		{registered,[tester]},
+		{applications, [kernel,stdlib]},
+		{mod, {mnesia_test_app,[]}},
+		{start_phases, []}
+	]}.
