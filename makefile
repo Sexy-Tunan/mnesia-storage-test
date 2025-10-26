@@ -38,6 +38,7 @@ test_disc_only_copies:
 
 # 清理
 clean:
+	@echo "使用rebar3清理beam文件"
 	@$(REBAR) clean
 
 # 清理 mnesia 数据库文件
