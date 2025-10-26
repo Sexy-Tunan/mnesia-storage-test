@@ -24,9 +24,26 @@ shell:
 restart:
 	@$(REBAR) clean
 	@$(REBAR) compile
+	@erl -sname tester -pa _build/default/lib/*/ebin -eval "application:ensure_all_started($(PROJECT)), application:start($(PROJECT))"
+
+test_disc_copies:
+	@$(REBAR) clean
+	@$(REBAR) compile
 	@erl -sname tester -pa _build/default/lib/*/ebin -eval "application:ensure_all_started($(PROJECT)), application:start($(PROJECT)), tester:test_disc_copies()"
 
+test_disc_only_copies:
+	@$(REBAR) clean
+	@$(REBAR) compile
+	@erl -sname tester -pa _build/default/lib/*/ebin -eval "application:ensure_all_started($(PROJECT)), application:start($(PROJECT)), tester:test_disc_only_copies()"
 
 # 清理
 clean:
 	@$(REBAR) clean
+
+# 清理 mnesia 数据库文件
+clean-db:
+	@echo "清理 Mnesia 数据库文件..."
+	@rm -rf Mnesia.*
+	@echo "数据库文件已清理"
+
+clean-all: clean clean-db
