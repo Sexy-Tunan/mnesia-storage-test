@@ -1,3 +1,4 @@
+测试Mnesia的最大存储，其中
 Mnesia 采用 disc_copies 模式
 对比
 Mnesia 采用 disc_only_copies 模式
