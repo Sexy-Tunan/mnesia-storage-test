@@ -21,17 +21,17 @@ shell:
 	@erl -pa _build/default/lib/*/ebin
 
 # 一键重启（清理 + 编译 + 启动）
-restart:
+restart: clean-db
 	@$(REBAR) clean
 	@$(REBAR) compile
 	@erl -sname tester -pa _build/default/lib/*/ebin -eval "application:ensure_all_started($(PROJECT)), application:start($(PROJECT))"
 
-test_disc_copies:
+test_disc_copies: clean-db
 	@$(REBAR) clean
 	@$(REBAR) compile
 	@erl -sname tester -pa _build/default/lib/*/ebin -eval "application:ensure_all_started($(PROJECT)), application:start($(PROJECT)), tester:test_disc_copies()"
 
-test_disc_only_copies:
+test_disc_only_copies: clean-db
 	@$(REBAR) clean
 	@$(REBAR) compile
 	@erl -sname tester -pa _build/default/lib/*/ebin -eval "application:ensure_all_started($(PROJECT)), application:start($(PROJECT)), tester:test_disc_only_copies()"

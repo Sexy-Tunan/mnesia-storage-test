@@ -85,9 +85,9 @@ handle_call(disc_copies, _From, State) ->
 
 			spawn(fun() -> loop_insert(1) end),
 			{reply, {ok, started}, State};
-		{aborted, {already_exists, user1}} ->
-			io:format("表 user1 已存在，继续使用~n"),
-			{reply, {ok, already_exists}, State};
+%%		{aborted, {already_exists, user1}} ->
+%%			io:format("表 user1 已存在，继续使用~n"),
+%%			{reply, {ok, already_exists}, State};
 		Error ->
 			io:format("创建表失败: ~p~n", [Error]),
 			{reply, {error, Error}, State}
@@ -108,9 +108,9 @@ handle_call(disc_only_copies, _From, State) ->
 			%% 启动插入进程
 			spawn(fun() -> loop_insert2(1) end),
 			{reply, {ok, started}, State};
-		{aborted, {already_exists, user2}} ->
-			io:format("表 user2 已存在，继续使用~n"),
-			{reply, {ok, already_exists}, State};
+%%		{aborted, {already_exists, user2}} ->
+%%			io:format("表 user2 已存在，继续使用~n"),
+%%			{reply, {ok, already_exists}, State};
 		Error ->
 			io:format("创建表失败: ~p~n", [Error]),
 			{reply, {error, Error}, State}
