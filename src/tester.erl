@@ -101,7 +101,7 @@ handle_call(disc_only_copies, _From, State) ->
 			io:format("~n--- 初始信息 (disc_only_copies) ---~n"),
 			io:format("表中记录数: ~p~n", [maps:get(records, DataMap, unknown)]),
 			%% 特别说明 table_info中的memory选项，对于disk_only_copies是返回的存储在磁盘上的字节数
-			io:format("表元信息占用: ~.2f MB~n", [maps:get(memory_mb, DataMap, 0)]),
+			io:format("磁盘占用: ~.2f MB~n", [maps:get(disc_use, DataMap, 0)]),
 			io:format("ErLang总内存占用: ~.2f MB~n", [maps:get(total, DataMap, 0)]),
 			io:format("ets内存占用: ~.2f MB~n", [maps:get(ets_memory, DataMap, 0)]),
 			io:format("-------------------------------~n~n"),
@@ -190,7 +190,7 @@ loop_insert2(Num) ->
 				io:format("尝试插入: ~p 条记录~n", [Num]),
 				io:format("表中实际记录数: ~p~n", [maps:get(records, DataMap, unknown)]),
 				%% 特别说明 table_info中的memory选项，对于disk_only_copies是返回的存储在磁盘上的字节数
-				io:format("磁盘占用: ~.2f MB~n", [maps:get(memory_mb, DataMap, 0)]),
+				io:format("磁盘占用: ~.2f MB~n", [maps:get(disc_use, DataMap, 0)]),
 				io:format("ErLang总内存占用: ~.2f MB~n", [maps:get(total, DataMap, 0)]),
 				io:format("ets内存占用: ~.2f MB~n", [maps:get(ets_memory, DataMap, 0)]),
 				io:format("-------------------------------~n~n");
